@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+:root {
+  /* Light mode variables with improved contrast */
+  --background: #ffffff;
+  --foreground: #111827; /* Darker text for better readability */
+  --card-background: #f8fafc; /* Slightly lighter for better contrast with content */
+  --card-border: #d1d5db; /* Darker border for better visibility */
+  --primary: #1e40af; /* More vibrant primary color */
+  --primary-hover: #1e3a8a; /* Darker hover state */
+  --secondary: #4f46e5; /* Added secondary color */
+  --secondary-hover: #4338ca;
+  --danger: #dc2626; /* Added danger color */
+  --success: #16a34a; /* Added success color */
+  --text-primary: #111827; /* Darker for better contrast */
+  --text-secondary: #374151; /* Darker secondary text */
+  --text-muted: #4b5563; /* Darker muted text */
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card-background: var(--card-background);
+  --color-card-border: var(--card-border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-shadow: var(--shadow);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a; /* Slightly blue-ish dark bg for modern look */
+    --foreground: #f8fafc; /* Brighter text for dark mode */
+    --card-background: #1e293b; /* Slightly lighter than bg for contrast */
+    --card-border: #334155; /* More visible border in dark mode */
+    --primary: #60a5fa; /* Brighter blue in dark mode */
+    --primary-hover: #3b82f6;
+    --secondary: #a5b4fc; /* Brighter secondary in dark mode */
+    --secondary-hover: #818cf8;
+    --danger: #f87171; /* Brighter danger in dark mode */
+    --success: #4ade80; /* Brighter success in dark mode */
+    --text-primary: #f8fafc; /* Bright white text */
+    --text-secondary: #e2e8f0; /* Brighter secondary text */
+    --text-muted: #cbd5e1; /* Brighter muted text */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  line-height: 1.5;
+  font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Improved styles for cards and containers */
+.card {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--primary);
+}
+
+/* Enhanced text styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p,
+li {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Enhanced button styles */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: white;
+}
+
+.btn-success {
+  background-color: var(--success);
+  color: white;
+}
+
+/* Form elements */
+input,
+select,
+textarea {
+  background-color: var(--card-background);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(var(--primary), 0.2);
+}
+
+/* Nice transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--card-border);
+}
+
+th {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--card-background) 95%,
+    var(--primary) 5%
+  );
+}
+
+/* Monaco editor customization */
+.monaco-editor {
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+/* Notification styles */
+.notification {
+  padding: 1rem;
+  border-radius: 0.375rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.notification-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.notification-error {
+  background-color: var(--danger);
+  color: white;
+}
+
+/* Code blocks */
+code {
+  font-family: var(--font-mono, monospace);
+  background-color: color-mix(
+    in srgb,
+    var(--card-background) 50%,
+    var(--card-border) 50%
+  );
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+pre {
+  background-color: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 0.375rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
